@@ -8,7 +8,7 @@ async function getData(url) {
   console.log(data);
 }
 
-getData(url);
+// getData(url);
 
 // functional programming
 // pure function
@@ -70,8 +70,8 @@ function add(a) {
 let currying = (a) => (b) => (c) => a + b;
 let result1 = currying(10)(20)(30);
 console.log(result1);
-let result = add(10)(20);
-console.log(result);
+//let result = add(10)(20);
+//console.log(result);
 
 // 6. composition
 // definition: Composition is the process of combining two or more functions to
@@ -137,3 +137,50 @@ console.log(cache); // {4: 10, 3: 6, 2: 3, 1: 1, 0: 0}
 
 // 2*2/2+2 => 2*2 = 4/2 = 2+2 = 4
 // 2*2/2+2 => 2*2 = 4/2 = 2+2 = 4
+
+console.clear();
+// debouncing & throttling
+// debouncing
+
+let element = document.querySelector("#inputText");
+
+function debounce(limit, cb) {
+  let timeOut = null;
+  return function (event) {
+    if (timeOut) {
+      clearTimeout(timeOut);
+    }
+    timeOut = setTimeout(() => {
+      cb(event);
+    }, limit);
+  };
+}
+
+element.addEventListener(
+  "keyup",
+  debounce(1000, function (event) {
+    console.log(element.value);
+  })
+);
+
+// throttling
+function throttling(limit, cb) {
+  let runAgain = true;
+  return function (event) {
+    if (runAgain === true) {
+      runAgain = false;
+      setTimeout(function () {
+        cb(event);
+        runAgain = true;
+      }, limit);
+    }
+  };
+}
+window.addEventListener(
+  "scroll",
+  throttling(1000, function () {
+    console.log("hello");
+  })
+);
+
+// arrays & algorithms
