@@ -184,3 +184,105 @@ window.addEventListener(
 );
 
 // arrays & algorithms
+
+// error handling
+// try catch block
+function divide(a, b) {
+  try {
+    if (b === 0) {
+      throw new ReferenceError("Divide by zero error");
+    }
+    return a / b;
+  } catch (error) {
+    console.log(error.message);
+  } finally {
+    console.log("I am finally block");
+  }
+}
+
+// error class name
+// ReferenceError
+// Definition: An illegal reference has occurred.
+// example: let x = y; // y is not defined
+
+// TypeError
+// Definition: A type error has occurred.
+// example: let x = null; x.foo(); // null has no properties
+
+// SyntaxError
+// Definition: A syntax error has occurred.
+// example: alert("Hello); // missing " at the end
+
+//  RangeError
+// Definition: A number “out of range” has occurred.
+// example: let arr = new Array(-1); // negative length
+
+//  EvalError
+// Definition: An error in the eval() function has occurred.
+// example: eval('alert("Hello)'); // missing ' at the end
+
+// error handling with promises
+async function divide(a, b) {
+  if (b === 0) {
+    return Promise.reject(new ReferenceError("Divide by zero error"));
+  }
+  return Promise.resolve(a / b);
+}
+
+divide(10, 0)
+  .then((result) => {
+    console.log(result);
+  })
+  .catch((error) => {
+    console.log(error.message);
+  });
+
+// fetch api with async await
+async function getData(url) {
+  try {
+    let response = await fetch(url);
+    let data = await response.json();
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+// handel a promise error with window event listener
+window.addEventListener("unhandledrejection", function (event) {
+  console.log(event.reason.message);
+});
+
+// window onerror event
+window.onerror = function (message, url, line, column, error) {
+  console.log(message);
+};
+
+// browser storage
+// 1. Local Storage
+// definition: Local Storage is a type of web storage that allows
+// you to store data
+// in the browser with no expiration date.
+localStorage.setItem("name", "John");
+localStorage.getItem("name");
+localStorage.removeItem("name");
+localStorage.clear();
+
+// 2. Session Storage
+// definition: Session Storage is a type of web storage that allows
+// you to store data
+// in the browser for the duration of the page session.
+sessionStorage.setItem("name", "John");
+sessionStorage.getItem("name");
+sessionStorage.removeItem("name");
+sessionStorage.clear();
+
+// 3. Cookies
+// definition: Cookies are small pieces of data that are stored in the
+// user's browser.
+document.cookie = "name=John";
+document.cookie;
+document.cookie = "name=John; expires=Thu, 31 Jan 2025 00:00:00 UTC";
+
+// localStorage can store size up to 5MB to 10 MB
+// sessionStorage can store size up to 5MB to 10 MB
+// cookie up to 4kb per cookie
