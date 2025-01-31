@@ -159,3 +159,29 @@ console.log("search fill result is ", result17);
 let array3 = [1, 2, [3, 4, [5, 6]]];
 let result18 = array3.flat(2); // 2 is depth
 console.log("search flat result is ", result18);
+
+// Object methods
+// 1. Object.keys
+// 2. Object.values
+// 3. Object.entries
+// 4. Object.assign
+// 5. Object.freeze
+
+// Search DSA
+// 1. Linear Search
+// Complexity: O(n)
+// 2. Binary Search
+// Complexity: O(log n)
+
+// Sorting DAS
+// O(1)
+// O(n)
+// 1000 => O(1000) => 1000
+// O(log n)
+// 1000 => log_2(1000) => 10
+
+// O(n^2) => Bubble Sort
+// Ex => Int
+// 100 => 4x
+
+// O(n log n)
